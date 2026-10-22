@@ -1,69 +1,71 @@
 
-document.addEventListener("DOMContentLoaded", () => {
-  const menuToggle = document.querySelector(".menu-toggle");
-  const navMenu = document.querySelector(".nav-menu");
-  const navLinks = document.querySelectorAll(".nav-menu a");
-  const currentYear = document.querySelector("#current-year");
-  const faqItems = document.querySelectorAll(".faq-list details");
+const menuToggle = document.querySelector(".menu-toggle");
+const nav = document.querySelector(".nav");
+const navLinks = document.querySelectorAll(".nav a");
 
-  // Atualiza o ano do rodapé automaticamente.
-  if (currentYear) {
-    currentYear.textContent = new Date().getFullYear();
-  }
+// Menu mobile
+function closeMenu() {
+  if (!menuToggle || !nav) return;
 
-  // Menu para celular.
-  if (menuToggle && navMenu) {
-    menuToggle.addEventListener("click", () => {
-      const isOpen =
-        menuToggle.getAttribute("aria-expanded") === "true";
+  menuToggle.setAttribute("aria-expanded", "false");
+  menuToggle.setAttribute("aria-label", "Abrir menu");
+  nav.classList.remove("is-open");
+  document.body.classList.remove("menu-open");
+}
 
-      menuToggle.setAttribute("aria-expanded", String(!isOpen));
-      menuToggle.setAttribute(
-        "aria-label",
-        isOpen ? "Abrir menu" : "Fechar menu"
-      );
+if (menuToggle && nav) {
+  menuToggle.addEventListener("click", () => {
+    const isExpanded =
+      menuToggle.getAttribute("aria-expanded") === "true";
 
-      navMenu.classList.toggle("is-open", !isOpen);
-    });
+    menuToggle.setAttribute("aria-expanded", String(!isExpanded));
+    menuToggle.setAttribute(
+      "aria-label",
+      isExpanded ? "Abrir menu" : "Fechar menu"
+    );
 
-    // Fecha o menu ao selecionar uma seção.
-    navLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        navMenu.classList.remove("is-open");
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.setAttribute("aria-label", "Abrir menu");
-      });
-    });
+    nav.classList.toggle("is-open", !isExpanded);
+    document.body.classList.toggle("menu-open", !isExpanded);
+  });
 
-    // Fecha o menu com a tecla Escape.
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        navMenu.classList.remove("is-open");
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.setAttribute("aria-label", "Abrir menu");
-      }
-    });
+  navLinks.forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
 
-    // Fecha o menu ao voltar para a tela desktop.
-    window.addEventListener("resize", () => {
-      if (window.innerWidth > 700) {
-        navMenu.classList.remove("is-open");
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.setAttribute("aria-label", "Abrir menu");
-      }
-    });
-  }
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeMenu();
+    }
+  });
 
-  // Mantém apenas uma pergunta do FAQ aberta por vez.
-  faqItems.forEach((item) => {
-    item.addEventListener("toggle", () => {
-      if (item.open) {
-        faqItems.forEach((otherItem) => {
-          if (otherItem !== item) {
-            otherItem.open = false;
-          }
-        });
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 720) {
+      closeMenu();
+    }
+  });
+}
+
+// Ano automático no rodapé
+const yearElement = document.querySelector("#current-year");
+
+if (yearElement) {
+  yearElement.textContent = new Date().getFullYear();
+}
+
+// FAQ: mantém apenas uma pergunta aberta por vez
+const faqItems = document.querySelectorAll(".faq-item");
+
+faqItems.forEach((item) => {
+  item.addEventListener("toggle", () => {
+    if (!item.open) return;
+
+    faqItems.forEach((otherItem) => {
+      if (otherItem !== item) {
+        otherItem.open = false;
       }
     });
   });
 });
+
+// Fecha o menu ao navegar para uma âncora
+window.addEventListener("hashchange", closeMenu);
