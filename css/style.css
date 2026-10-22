@@ -1366,3 +1366,161 @@ h2 span {
   object-position: center;
   background: #0b0b0b;
 }
+/* ÍCONES VETORIAIS DOS SERVIÇOS */
+
+.service-icon {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.service-icon svg {
+  display: block;
+  width: 42px;
+  height: 42px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* FORMULÁRIO DE CONTATO */
+
+.contact-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 43px auto 30px;
+  color: var(--gray);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.contact-divider span:first-child,
+.contact-divider span:last-child {
+  width: min(70px, 12vw);
+  height: 1px;
+  background: var(--line);
+}
+
+.contact-form {
+  width: min(100%, 680px);
+  margin: 0 auto;
+  padding: clamp(22px, 4vw, 38px);
+  text-align: left;
+  background: var(--black-soft);
+  border: 1px solid var(--line);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.form-field label {
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 14px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0;
+  outline: none;
+  background: #0b0b0b;
+  color: var(--white);
+  font: inherit;
+  font-size: 13px;
+  transition: border-color 0.2s ease;
+}
+
+.form-field input,
+.form-field select {
+  min-height: 48px;
+}
+
+.form-field textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: #777;
+}
+
+.form-field select:invalid {
+  color: #888;
+}
+
+.form-field select option {
+  background: #111;
+  color: var(--white);
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: var(--yellow);
+}
+
+.form-submit {
+  width: 100%;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.form-note {
+  margin: 14px 0 0;
+  color: var(--gray);
+  font-size: 11px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.contact-caption {
+  line-height: 1.8;
+}
+
+/* FORMULÁRIO RESPONSIVO */
+
+@media (max-width: 560px) {
+  .form-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .contact-divider {
+    gap: 10px;
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .contact-form {
+    padding: 22px 17px;
+  }
+
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    font-size: 16px;
+  }
+}

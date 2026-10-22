@@ -1,4 +1,3 @@
-
 const menuToggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".nav");
 const navLinks = document.querySelectorAll(".nav a");
@@ -46,7 +45,7 @@ if (menuToggle && nav) {
 }
 
 // Ano automático no rodapé
-const yearElement = document.querySelector("#current-year");
+const yearElement = document.querySelector("#year");
 
 if (yearElement) {
   yearElement.textContent = new Date().getFullYear();
@@ -66,6 +65,41 @@ faqItems.forEach((item) => {
     });
   });
 });
+
+// Formulário de orçamento integrado ao WhatsApp
+const contactForm = document.querySelector("#contact-form");
+const whatsappNumber = "5519989223410";
+
+if (contactForm) {
+  contactForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (!contactForm.reportValidity()) return;
+
+    const formData = new FormData(contactForm);
+
+    const name = String(formData.get("name") || "").trim();
+    const contact = String(formData.get("contact") || "").trim();
+    const service = String(formData.get("service") || "").trim();
+    const message = String(formData.get("message") || "").trim();
+
+    const whatsappMessage = [
+      "Olá! Vim pelo site da Kompany.code e gostaria de solicitar um orçamento.",
+      "",
+      `Nome: ${name}`,
+      `Contato: ${contact}`,
+      `Tipo de projeto: ${service}`,
+      "",
+      "Sobre o projeto:",
+      message
+    ].join("\n");
+
+    const whatsappUrl =
+      `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+  });
+}
 
 // Fecha o menu ao navegar para uma âncora
 window.addEventListener("hashchange", closeMenu);

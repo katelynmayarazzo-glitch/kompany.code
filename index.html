@@ -7,7 +7,7 @@
 
   <meta
     name="description"
-    content="A kompany.code desenvolve sites, sistemas e plataformas digitais sob medida."
+    content="A kompany.code desenvolve sites, sistemas, plataformas e automações digitais sob medida para empresas e empreendedores."
   >
 
   <title>kompany.code — tecnologia que transforma</title>
@@ -141,10 +141,19 @@
 
         <div class="services-grid">
 
+          <!-- SERVIÇO 01 -->
           <article class="service-card">
             <div class="service-number">01 / WEB</div>
 
-            <div class="service-icon">↗</div>
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" focusable="false">
+                <rect x="5" y="7" width="38" height="29" rx="2"/>
+                <path d="M5 14h38"/>
+                <path d="M12 10.5h.1M16 10.5h.1M20 10.5h.1"/>
+                <path d="M24 36v6M16 42h16"/>
+                <path d="m19 25 5-5 5 5M24 20v10"/>
+              </svg>
+            </div>
 
             <h3>Sites e experiências digitais</h3>
 
@@ -158,10 +167,18 @@
             </a>
           </article>
 
+          <!-- SERVIÇO 02 -->
           <article class="service-card">
             <div class="service-number">02 / BUILD</div>
 
-            <div class="service-icon">⌘</div>
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" focusable="false">
+                <rect x="5" y="6" width="16" height="14" rx="2"/>
+                <rect x="27" y="6" width="16" height="14" rx="2"/>
+                <rect x="16" y="28" width="16" height="14" rx="2"/>
+                <path d="M13 20v4h22v-4M24 24v4"/>
+              </svg>
+            </div>
 
             <h3>Sistemas personalizados</h3>
 
@@ -175,10 +192,19 @@
             </a>
           </article>
 
+          <!-- SERVIÇO 03 -->
           <article class="service-card">
             <div class="service-number">03 / FLOW</div>
 
-            <div class="service-icon">⟳</div>
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" focusable="false">
+                <path d="M38 17A15 15 0 0 0 11 13L7 18"/>
+                <path d="M7 9v9h9"/>
+                <path d="M10 31a15 15 0 0 0 27 4l4-5"/>
+                <path d="M41 39v-9h-9"/>
+                <path d="M24 16v8l6 4"/>
+              </svg>
+            </div>
 
             <h3>Automação de processos</h3>
 
@@ -192,10 +218,17 @@
             </a>
           </article>
 
+          <!-- SERVIÇO 04 -->
           <article class="service-card">
             <div class="service-number">04 / THINK</div>
 
-            <div class="service-icon">✳</div>
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" focusable="false">
+                <path d="M24 4v12M24 32v12M4 24h12M32 24h12"/>
+                <path d="m10 10 8 8M30 30l8 8M38 10l-8 8M18 30l-8 8"/>
+                <circle cx="24" cy="24" r="6"/>
+              </svg>
+            </div>
 
             <h3>Estratégia digital</h3>
 
@@ -739,10 +772,92 @@
 
         <a
           class="button button-primary contact-button"
-          href="mailto:SEUEMAIL@EXEMPLO.COM?subject=Projeto%20kompany.code"
+          href="https://wa.me/5519989223410?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Kompany.code%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          Vamos conversar <span>↗</span>
+          Conversar pelo WhatsApp <span aria-hidden="true">↗</span>
         </a>
+
+        <div class="contact-divider">
+          <span></span>
+          <span>OU CONTE SOBRE SEU PROJETO</span>
+          <span></span>
+        </div>
+
+        <form class="contact-form" id="contact-form">
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="contact-name">Seu nome</label>
+              <input
+                id="contact-name"
+                name="name"
+                type="text"
+                placeholder="Como podemos te chamar?"
+                autocomplete="name"
+                required
+              >
+            </div>
+
+            <div class="form-field">
+              <label for="contact-method">Seu WhatsApp ou e-mail</label>
+              <input
+                id="contact-method"
+                name="contact"
+                type="text"
+                placeholder="Como podemos responder?"
+                autocomplete="email"
+                required
+              >
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="contact-service">O que você precisa?</label>
+
+            <select id="contact-service" name="service" required>
+              <option value="" selected disabled>
+                Selecione o tipo de projeto
+              </option>
+              <option value="Site ou landing page">
+                Site ou landing page
+              </option>
+              <option value="Sistema ou plataforma">
+                Sistema ou plataforma
+              </option>
+              <option value="Automação ou ferramenta">
+                Automação ou ferramenta
+              </option>
+              <option value="Outro projeto personalizado">
+                Outro projeto personalizado
+              </option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="contact-message">
+              Conte um pouco sobre sua ideia
+            </label>
+
+            <textarea
+              id="contact-message"
+              name="message"
+              rows="5"
+              placeholder="Qual problema você quer resolver ou o que gostaria de desenvolver?"
+              required
+            ></textarea>
+          </div>
+
+          <button class="button button-primary form-submit" type="submit">
+            Enviar solicitação <span aria-hidden="true">↗</span>
+          </button>
+
+          <p class="form-note">
+            Ao enviar, você será direcionado ao WhatsApp para concluir o contato.
+          </p>
+
+        </form>
 
         <span class="contact-caption">
           UMA BOA IDEIA PODE SER O COMEÇO DE ALGO GRANDE
