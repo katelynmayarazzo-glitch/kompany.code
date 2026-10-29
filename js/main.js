@@ -68,7 +68,7 @@ faqItems.forEach((item) => {
 
 // Formulário de orçamento integrado ao WhatsApp
 const contactForm = document.querySelector("#contact-form");
-const whatsappNumber = "5519989223410";
+const whatsappNumber = "5519974288208";
 
 if (contactForm) {
   contactForm.addEventListener("submit", (event) => {
